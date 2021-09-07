@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"os"
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -28,7 +29,7 @@ func main(){
 		AllowCredentials: true,
 	}))
 	server.POST("/ping", func(c *gin.Context){
-		secret :="6LffWk4cAAAAAM06OB14FjHR_uJULcpKQ6csiZ_1"
+		secret := os.Getenv("SECRET_KEY")
 
 		var captchaData UserDetails
 		var googleData GoogleResponse
